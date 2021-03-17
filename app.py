@@ -4,13 +4,11 @@ import pytesseract as pt
 import cv2 as cv
 import cv2
 import pytesseract
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 from pytesseract import Output
 import numpy as np
 import easyocr
 reader = easyocr.Reader(['en'])
-#pt.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
-pytesseract.pytesseract.tesseract_cmd = r'c:\Users\Panja\AppData\Local\Programs\Tesseract-OCR\\tesseract.exe'
 
 st.sidebar.markdown("""<style>body {background-color: #2C3454;color:white;}</style><body></body>""", unsafe_allow_html=True)
 st.markdown("""<h1 style='text-align: center; color: white;font-size:60px;margin-top:-50px;'>CROWDSHAKTI</h1><h1 style='text-align: center; color: white;font-size:30px;margin-top:-30px;'>Machine Learning <br></h1>""",unsafe_allow_html=True)
@@ -38,9 +36,8 @@ def extract(img):
         tr = (int(tr[0]), int(tr[1]))
         br = (int(br[0]), int(br[1]))
         bl = (int(bl[0]), int(bl[1]))
-        
         cv2.rectangle(img, tl, br, (0, 255, 0), 5)
-            
+
 if image_file is not None:
     st.markdown("<h1 style='color:yellow;'>Uploaded Image</h1>", unsafe_allow_html=True)
     st.image(image_file,width=400)
@@ -51,9 +48,7 @@ if image_file is not None:
     if (radio =='EasyOCR'):
         extract(img)
         st.image(img, use_column_width=True,clamp = True)
-       
     else:
-        
         d = pytesseract.image_to_data(img,output_type=Output.DICT)
         n_boxes = len(d['level'])
         for i in range(n_boxes):
@@ -63,17 +58,3 @@ if image_file is not None:
 
         plt.imshow(img)
         st.image(img, use_column_width=True,clamp = True)
-        
-
-   
-  
-
-
-  
-            
-    
-
-   
-
-
-
