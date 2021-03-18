@@ -56,7 +56,7 @@ if image_file is not None:
 
         plt.imshow(img)
         st.image(img, use_column_width=True,clamp = True)
-    text = pt.image_to_string(img, config=f"-l eng --oem 3 --psm {slide}")
+    text = pt.image_to_string(img, config=f"-l eng --oem 3 --psm 1")
     st.markdown("<h1 style='color:yellow;'>Extracted Text</h1>", unsafe_allow_html=True)
     if text !="" :
         slot = st.empty()
