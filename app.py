@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 import pytesseract as pt
-import cv2 as cv
+import cv2
 import pytesseract
 import matplotlib.pyplot as plt
 from pytesseract import Output
@@ -41,8 +41,8 @@ if image_file is not None:
     st.markdown("<h1 style='color:yellow;'>Uploaded Image</h1>", unsafe_allow_html=True)
     st.image(image_file,width=400)
     file_bytes = np.asarray(bytearray(image_file.read()), dtype=np.uint8)
-    radio=st.sidebar.radio("Select Action",('EasyOCR','Pytesseract'))
-    img = cv.imdecode( file_bytes, cv.IMREAD_COLOR)
+    radio=st.sidebar.radio("Select Action",('Pytesseract', 'EasyOCR'))
+    img = cv2.imdecode( file_bytes, cv2.IMREAD_COLOR)
     st.markdown("<h1 style='color:yellow;'>Extracted Image</h1>", unsafe_allow_html=True)
     if (radio =='EasyOCR'):
         pass
