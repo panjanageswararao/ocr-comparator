@@ -2,13 +2,12 @@ import streamlit as st
 from PIL import Image
 import pytesseract as pt
 import cv2 as cv
-import cv2
 import pytesseract
 import matplotlib.pyplot as plt
 from pytesseract import Output
 import numpy as np
-import easyocr
-reader = easyocr.Reader(['en'])
+# import easyocr
+# reader = easyocr.Reader(['en'])
 
 st.sidebar.markdown("""<style>body {background-color: #2C3454;color:white;}</style><body></body>""", unsafe_allow_html=True)
 st.markdown("""<h1 style='text-align: center; color: white;font-size:60px;margin-top:-50px;'>CROWDSHAKTI</h1><h1 style='text-align: center; color: white;font-size:30px;margin-top:-30px;'>Machine Learning <br></h1>""",unsafe_allow_html=True)
@@ -46,6 +45,7 @@ if image_file is not None:
     img = cv.imdecode( file_bytes, cv.IMREAD_COLOR)
     st.markdown("<h1 style='color:yellow;'>Extracted Image</h1>", unsafe_allow_html=True)
     if (radio =='EasyOCR'):
+        pass
         extract(img)
         st.image(img, use_column_width=True,clamp = True)
     else:
